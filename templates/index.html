@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Nhận diện các loài chim</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <style>
+            .bird-lists{
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+            }
+            .bird-item{
+                width: calc((100% - 20px)/8);
+                background-color: #E1E6EA;
+            }
+            .bird-item img{
+                max-width: 100%;
+            }
+            .bird-item h3{
+                margin: 5px 0px;
+                text-align: center;
+                color: black;
+            }
+            img{
+            max-width: 100%;
+            margin: 0 auto;
+            }
+            .box{
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+            }
+        </style>
+        <script>
+            function previewImage() {
+                var file = document.getElementById("file").files;
+                if (file.length > 0) {
+                    var fileReader = new FileReader();
+        
+                    fileReader.onload = function (event) {
+                        document.getElementById("preview").setAttribute("src", event.target.result);
+                    };
+        
+                    fileReader.readAsDataURL(file[0]);
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <nav class="navbar navbar-light bg-light">
+                <div class="container-fluid">
+                  <a class="navbar-brand" href="#">
+                    <img src="https://www.inlogo.vn/vnt_upload/File/Image/download.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+                    Trang chủ
+                  </a>
+                </div>
+              </nav>
+            <div>
+                <h1 class="text-center">Website nhận diện các loại chim</h1>
+            </div>
+            <div class="bird-lists mt-5">
+                <div class="bird-item">
+                    <img src="../static/chichchoe.jpg" alt="">
+                    <h3 class="bird-name">Chích choè</h3>
+                </div>
+                <div class="bird-item">
+                    <img src="../static/bocau.jpg" alt="">
+                    <h3 class="bird-name">Bồ Câu</h3>
+                </div>
+                <div class="bird-item">
+                    <img src="../static/hoami.jpg" alt="">
+                    <h3 class="bird-name">Hoạ mi</h3>
+                </div>
+                <div class="bird-item">
+                    <img src="../static/se.jpg" alt="">
+                    <h3 class="bird-name">Chim sẻ</h3>
+                </div>
+                <div class="bird-item">
+                    <img src="../static/vet.jpg" alt="">
+                    <h3 class="bird-name">Vẹt</h3>
+                </div>
+                <div class="bird-item">
+                    <img src="../static/chaomao.jpg" alt="">
+                    <h3 class="bird-name">Chào mào</h3>
+                </div>
+                <div class="bird-item">
+                    <img src="../static/vanganh.jpg" alt="">
+                    <h3 class="bird-name">Vàng anh</h3>
+                </div>
+                <div class="bird-item">
+                    <img src="../static/qua.jpg" alt="">
+                    <h3 class="bird-name">Quạ</h3>
+                </div>
+            </div>    
+            <form class="text-center" method="POST" action="{{url_for('home')}}" enctype="multipart/form-data">
+                <input type="file" id="file" name='image' class='form-control mt-5' onchange="previewImage();"><br><br><br>
+                <div class="box mb-2">
+                    <img id="preview">
+                </div>
+                <input type="submit" class='btn btn-outline-primary mb-4' value="Dự đoán">
+            </form>
+            
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    </body>
+</html>
